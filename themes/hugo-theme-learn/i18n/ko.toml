@@ -1,5 +1,5 @@
 [Search-placeholder]
-other = "검색..."
+other = "검색"
 
 [Clear-History]
 other = "기록삭제"
@@ -11,7 +11,7 @@ other = "첨부"
 other = "에러"
 
 [message-404]
-other = "죄송합니다. 페이지가 존재하지 않습니다. ㅜ_ㅜ."
+other = "페이지가 존재하지 않습니다"
 
 [Go-to-homepage]
 other = "홈으로"
@@ -23,4 +23,4 @@ other = "이 페이지를 편집"
 other = "More"
 
 [Expand-title]
-other = "펼치기..."
+other = "펼치기"
