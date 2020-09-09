@@ -1,5 +1,5 @@
 ---
-date: 2020-07-29
+date: 2020-09-03
 title: "AWS 계정으로 시작하기"
 weight: 110
 pre: "<b>   </b>"
@@ -26,7 +26,7 @@ pre: "<b>   </b>"
 6.  **Attach existing policies directly** (기존 정책 직접 연결)를 선택하고, **AdministratorAccess** 정책에 체크박스를 선택한 후, **Next: Tags** (다음: 태그)를 클릭합니다.
 ![IAM User Create](/images/settings/iam_user_create_02.png)
 7.  태그 추가(선택 사항) 단계에서 **Next: Review** (다음: 검토)를 클릭합니다.
-8.  Administrator 사용자에 AdministratorAccess 관리형 정책이 추가 된 것을 확인하고 **Create user** (사용자 만들기)를 클릭합니다.
+8.  Administrator 사용자에 AdministratorAccess 관리형 정책이 추가된 것을 확인하고 **Create user** (사용자 만들기)를 클릭합니다.
 9.  사용자가 추가되면 **로그인 URL**을 복사합니다. 해당 URL은 아래의 형식을 가집니다.
 `https://<your_aws_account_id>.signin.aws.amazon.com/console`
 {{% notice warning %}}

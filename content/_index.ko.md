@@ -7,7 +7,7 @@ weight: 1
 
 # Amazon EKS로 웹 페이지 구성하기
 * * *
-![k8s logo](/images/k8s_logo.png)
+![eks architecture](/images/k8s_architecture.svg)
 
 국내 유명 기업의 DevOps 팀에 다니는 A씨는 새로운 웹 애플리케이션을 개발하는 프로젝트를 맡게 됩니다.
 
@@ -24,5 +24,5 @@ weight: 1
 이 때, A씨는 완전 관리형의 kubernetes 서비스인 [Amazon EKS(Amazon Elastic Kubernetes Service)](https://aws.amazon.com/ko/kubernetes/)를 발견하게 됩니다. 그리고 **Amazon EKS**의 장점 및 특징을 파악하기 위해, 간단한 웹 페이지를 올려보리라 결심합니다!
  
 {{% notice info %}}
-본 실습은 컨테이너 이미지를 만드는 것을 시작으로 **Amazon EKS**에 컨테이너를 배포하여 웹 페이지를 올리는 것을 목표로 합니다. 실습을 통해, 컨테이너, 쿠버네티스 그리고 Amazon EKS와 함께 사용하는 다양한 AWS 서비스들에 대해 학습합니다.
+본 실습은 **컨테이너 이미지를 만드는 것을 시작으로 Amazon EKS에 컨테이너를 배포하여 웹 페이지를 올리는 것을 목표**로 합니다. 실습을 통해, 컨테이너, 쿠버네티스 그리고 Amazon EKS와 함께 사용하는 다양한 AWS 서비스들에 대해 학습합니다.
 {{% /notice %}}

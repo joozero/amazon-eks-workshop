@@ -1,4 +1,4 @@
-title = "Amazon EKS 사용하기"
+title = "Amazon EKS로 웹 페이지 구성하기"
 googleAnalytics = ""
 anguageCode = "ko-KR"
 defaultContentLanguage = "ko"
@@ -35,7 +35,7 @@ home = [ "HTML", "RSS", "JSON"]
   weight = 1020
 
 [[menu.shortcuts]]
-  name = "<i class='fab fa-info'></i> Feedback"
+  name = "<i class='fas fa-heart'></i> Feedback"
   url = "https://github.com/joozero/amazon_eks"
   weight = 1030
 
