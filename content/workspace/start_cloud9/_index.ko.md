@@ -23,7 +23,7 @@ AWS Cloud9으로 IDE를 구축하는 순서는 아래와 같습니다.
 ![AWS cloud9](/images/workspace/aws_cloud9_01.png)
 
 {{% notice info %}}
-AWS Cloud9의 경우, 써드파티 쿠키를 필요로 합니다. 만약 위와 같은 화면이 나오지 않을 경우, [여기](https://docs.aws.amazon.com/cloud9/latest/user-guide/troubleshooting.html#troubleshooting-env-loading)를 살펴봅니다.
+AWS Cloud9의 경우, third-party-cookies를 필요로 합니다. 만약 위와 같은 화면이 나오지 않을 경우, [여기](https://docs.aws.amazon.com/cloud9/latest/user-guide/troubleshooting.html#troubleshooting-env-loading)를 살펴봅니다.
 {{% /notice %}}
 
 #### IAM Role 생성
@@ -51,7 +51,17 @@ AWS Cloud9 환경은 EC2 인스턴스로 구동됩니다. 따라서 EC2 콘솔�
 
 #### IDE에서 IAM 설정 업데이트
 
+AWS Cloud9의 경우, IAM credentials를 동적으로 관리합니다. 해당 credentials는 EKS IAM authentication과 호환되지 않기에 이를 비활성화하고 IAM Role을 붙입니다.
+
 1. AWS Cloud9 콘솔창에서 생성한 IDE로 다시 접속한 후, 우측 상단에 기어 아이콘을 클릭한 후, 사이드 바에서 **AWS SETTINGS**를 클릭합니다.
 2. **Credentials** 항목에서 **AWS managed temporary credentials** 설정을 비활성화합니다.
 3. Preference tab을 종료합니다.
-
+![AWS Cloud9 Workspace](/images/workspace/aws_cloud9_05.png)
+4. **Temporary credentials**이 없는지 확실히 하기 위해 기존의 자격 증명 파일도 제거합니다.
+    ```
+    rm -vf ${HOME}/.aws/credentials
+    ```
+5. [GetCallerIdentity]() CLI 명령어를 통해, Cloud9 IDE가 올바른 IAM Role을 사용하고 있는지 확인하세요. 결과 값이 나오면 올바르게 설정된 것입니다.
+    ```
+    aws sts get-caller-identity --query Arn | grep eksworkspace-admin
+    ```
