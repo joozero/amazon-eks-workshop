@@ -9,7 +9,7 @@ pre: "<b>  </b>"
 Amazon EKS는 kubernetes cluster 인증(authentication)을 위해, IAM을 사용합니다. 이를 위해, AWS IAM authenticator를 설치하고, 인증을 사용하기 위해 kubectl configuration을 변경합니다. 
 
 {{% notice warning %}}
-만약 AWS CLI 버전이 1.16.156 >= version인 경우, authenticator를 설치할 필요가 없습니다. 대신 **aws eks get-token** 명령어를 사용합니다. 
+만약 AWS CLI 버전이 1.16.156 >= version인 경우, authenticator를 설치할 필요가 없습니다. 이후 **aws eks get-token** 명령어를 사용합니다. 
 {{% /notice %}}
 
 * * *
