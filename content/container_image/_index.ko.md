@@ -16,4 +16,4 @@ pre: "<b>4.  </b>"
 ### 컨테이너 이미지에 대하여
 **컨테이너 이미지**는 컨테이너 실행에 필요한 파일과 설정 값 등을 묶어 놓은 것입니다. 그리고 그 이미지를 실행한 상태가 **컨테이너**라고 할 수 있습니다. 컨테이너 이미지는 [도커 허브(Docker Hub)](https://hub.docker.com/)와 같은 공식 이미지 저장소에서 다운 받아 사용할 수도 있고, 직접 만들 수도 있습니다.
 
-![docker logo](/images/docker/docker_logo.png)
+![docker logo](/images/container_image/docker_logo.png)

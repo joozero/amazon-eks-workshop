@@ -12,3 +12,5 @@ pre: "<b>4-1  </b>"
 #### 컨테이너 이미지 직접 만들기 
 
 docker file 기본 명령어 
+
+https://khj93.tistory.com/entry/Docker-Docker-File-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-%EB%AA%85%EB%A0%B9%EC%96%B4
