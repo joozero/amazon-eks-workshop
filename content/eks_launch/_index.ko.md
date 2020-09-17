@@ -5,15 +5,12 @@ weight: 400
 pre: "<b>5.  </b>"
 ---
 
-### eksctl을 사용하여 EKS 클러스터 생성하기
+Amazon EKS 클러스터는 다양한 방식으로 배포될 수 있습니다.
+- [AWS 콘솔 창](https://console.aws.amazon.com/eks/home#/)에서 클릭으로 배포하는 방법
+- [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) 혹은 [AWS CDK](https://docs.aws.amazon.com/cdk/api/latest/)와 같은 IaC(Infrastructure as Code) 도구를 사용해 배포하는 방법
+- EKS의 공식 CLI인 [eksctl](https://eksctl.io/)로 배포하는 방법
+- Terraform, Pulumi, Rancher 등으로 배포하는 방법
 
-그냥 설치하면 default 값으로 배포됨 하지만 우리는 yaml 파일로 정의한 다음 배포할 것임
-cloudformation을 통해 확인 가능 
-약 15분 20분 
+![eks cluster deploy method](/images/eks_launch/deploy_eks_cluster.png)
 
-생성되는 순서 나열하기 
-
-마지막
-```
-kubectl get nodes
-```
+본 실습에서는 **eksctl**을 사용하여 EKS 클러스터를 생성합니다.
