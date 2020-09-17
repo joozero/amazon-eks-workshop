@@ -27,10 +27,9 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 아래의 명령어를 통해, 최신의 kubectl이 설치되었는지 확인합니다.
 ```
-kubectl version client
+kubectl version --client=true --short=true
 ```
 아래와 같은 결과 값이 출력되는 것을 확인할 수 있습니다.
 ```
-Client Version: version.Info{Major:"1", Minor:"17+", GitVersion:"v1.17.9-eks-4c6976", GitCommit:"4c6976793196d70bc5cd29d56ce5440c9473648e", GitTreeState:"clean", BuildDate:"2020-07-17T19:00:19Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
-The connection to the server localhost:8080 was refused - did you specify the right host or port?
+Client Version: v1.17.7-eks-bffbac
 ```
