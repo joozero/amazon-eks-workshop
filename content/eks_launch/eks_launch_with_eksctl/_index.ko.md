@@ -33,7 +33,7 @@ eksctl create cluster
         desiredCapacity: 3 # 클러스터 워커 노드의 갯수
         volumeSize: 10  # 클러스터 워커 노드의 EBS 용량 (단위: GiB)
         iam:
-        withAddonPolicies:
+            withAddonPolicies:
             ImageBuilder: true # AWS ECR에 대한 권한 추가
             albIngress: true  # alb ingress에 대한 권한 추가
 
