@@ -34,8 +34,3 @@ pre: "<b>   </b>"
 {{% /notice %}}
 ![IAM User Create](/images/settings/iam_user_create_03.png)
 10. 이제 루트 사용자에서 로그아웃하고, 방금 복사한 URL로 접속해서 **새로 생성한 Administrator 사용자로 로그인** 합니다.
-
-
-
-
-

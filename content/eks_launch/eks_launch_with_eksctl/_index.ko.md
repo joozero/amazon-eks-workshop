@@ -11,7 +11,9 @@ eksctl을 사용하여 아무 설정 값을 주지 않고 아래의 명령어로
 ```
 eksctl create cluster
 ```
+{{% notice info %}}
 하지만 몇 가지 값을 커스텀하게 주기 위해 **구성 파일을 작성**하여 배포합니다. 뒤의 실습에서 쿠버네티스의 오브젝트를 생성할 때에도 단순히 kubectl CLI로 생성하는 것이 아닌 구성 파일을 작성하여 생성합니다. 이는 개인이 명시한 오브젝트들의 바라는 상태(desired state)를 쉽게 파악하고 관리할 수 있도록 하는 이점이 있습니다.
+{{% /notice %}}
 
 1. root 폴더(/home/ec2-user/environment) 위치에서 아래의 값을 붙여넣습니다.
     ```
@@ -20,12 +22,12 @@ eksctl create cluster
     kind: ClusterConfig
 
     metadata:
-    name: eks-demo-cluster # 생성할 EKS 클러스터명
-    region: ap-southeast-1 # 클러스터를 생성할 리젼
-    version: "1.17"
+        name: eks-demo-cluster # 생성할 EKS 클러스터명
+        region: ap-southeast-1 # 클러스터를 생성할 리젼
+        version: "1.17"
 
     vpc:
-    cidr: "192.168.0.0/16" # 클러스터에서 사용할 VPC의 CIDR
+        cidr: "192.168.0.0/16" # 클러스터에서 사용할 VPC의 CIDR
 
     managedNodeGroups:
     - name: eks-cluster-node-group # 클러스터의 노드 그룹명
@@ -34,12 +36,12 @@ eksctl create cluster
         volumeSize: 10  # 클러스터 워커 노드의 EBS 용량 (단위: GiB)
         iam:
             withAddonPolicies:
-            ImageBuilder: true # AWS ECR에 대한 권한 추가
-            albIngress: true  # alb ingress에 대한 권한 추가
+                ImageBuilder: true # AWS ECR에 대한 권한 추가
+                albIngress: true  # alb ingress에 대한 권한 추가
 
     cloudWatch:
-    clusterLogging:
-        enableTypes: ["*"]
+        clusterLogging:
+            enableTypes: ["*"]
     EOF
     ```
 2. 아래의 명령어를 통해, 클러스터를 배포합니다.
@@ -53,6 +55,7 @@ eksctl create cluster
     ```
 4. 
 # worker role name이 필요한가?
+생성 후에는 ~/.kube/config가 자동으로 만들어져있음 
 
 * * *
 #### 복습하기
