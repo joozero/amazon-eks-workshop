@@ -89,7 +89,14 @@ pre: "<b>7-1  </b>"
     kubectl apply -f service.yaml
     kubectl apply -f ingress.yaml
     ```
-
+6. 아래의 명렁어로 도출된 값 중, ADDRESS 값을 확인합니다.
+    ```
+    kubectl get ingress/flask-backend-ingress
+    ```
+7. 해당 주소에서 /contents/aws를 붙여 API 값을 웹 브라우저에서 확인합니다. 형식은 다음과 같습니다.
+    ```
+    http://e6fb2819-default-flaskback-a1dd-1303637096.ap-northeast-2.elb.amazonaws.com/contents/aws
+    ```
 * * *
 
 #### 현재의 아키텍처
