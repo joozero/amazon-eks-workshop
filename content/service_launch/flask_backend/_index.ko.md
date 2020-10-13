@@ -18,71 +18,73 @@ pre: "<b>7-1  </b>"
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-    name: demo-flask-backend
-    namespace: default
+      name: demo-flask-backend
+      namespace: default
     spec:
-    replicas: 3
-    selector:
+      replicas: 3
+      selector:
         matchLabels:
-        app: demo-flask-backend
-    template:
+          app: demo-flask-backend
+      template:
         metadata:
-        labels:
+          labels:
             app: demo-flask-backend
         spec:
-        containers:
+          containers:
             - name: demo-flask-backend
-            image: "{aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest"
-            imagePullPolicy: Always
-            ports:
+              image: "415718916760.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest"
+              imagePullPolicy: Always
+              ports:
                 - containerPort: 8080
     EOF
     ```
 3. 그 다음 service 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
-    ```
-    cat <<EOF> service.yaml
-    ---
-    apiVersion: v1
-    kind: Service
-    metadata:
-    name: demo-flask-backend
-    annotations:
-        alb.ingress.kubernetes.io/healthcheck-path: "/"
-    spec:
-    selector:
-        app: demo-flask-backend
-    type: NodePort
-    ports:
-        - port: 8080
-        targetPort: 8080
-        protocol: TCP
-    EOF
-    ```
+```
+cat <<EOF> service.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-flask-backend
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+spec:
+  selector:
+     app: demo-flask-backend
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+EOF
+```
 4. 마지막으로 ingress 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
-    ```
-    cat <<EOF> ingress.yaml
-    ---
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-    name: "flask-backend-ingress"
-    namespace: default
-    annotations:
-        kubernetes.io/ingress.class: alb
-        alb.ingress.kubernetes.io/scheme: internet-facing
-        alb.ingress.kubernetes.io/target-type: ip
-    labels:
-        app: demo-flask-backend
-    spec:
-    rules:
-        - http:
-            paths:
-            - path: /contents/*
-                backend:
-                serviceName: "demo-flask-backend"
-                servicePort: 8080
-    EOF
-    ```
+```
+cat <<EOF> ingress.yaml
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: "flask-backend-ingress"
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  labels:
+    app: demo-flask-backend
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /contents/*
+            backend:
+              serviceName: "demo-flask-backend"
+              servicePort: 8080
+
+EOF
+```
 5. 위에서 생성한 매니페스트를 아래의 순서대로 배포합니다.
     ```
     kubectl apply -f deployment.yaml
