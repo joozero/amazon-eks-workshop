@@ -90,6 +90,9 @@ pre: "<b>7-1  </b>"
     kubectl apply -f ingress.yaml
     ```
 
+* * *
 
 #### 현재의 아키텍처
 flask 백앤드를 배포한 후, 현재까지 구성된 서비스의 아키텍처는 아래와 같습니다.
+
+![current architecture](/images/service_launch/current-architecture.svg)
