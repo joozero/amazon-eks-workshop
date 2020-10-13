@@ -23,26 +23,26 @@ eksctl create cluster
     kind: ClusterConfig
 
     metadata:
-    name: eks-demo # 생성할 EKS 클러스터명
-    region: ap-northeast-2 # 클러스터를 생성할 리젼
-    version: "1.17"
-
+      name: eks-demo- # 생성할 EKS 클러스터명
+      region: ap-northeast-2 # 클러스터를 생성할 리젼
+      version: "1.17"
+    
     vpc:
-    cidr: "192.168.0.0/16" # 클러스터에서 사용할 VPC의 CIDR
-
+      cidr: "192.168.0.0/16" # 클러스터에서 사용할 VPC의 CIDR
+    
     managedNodeGroups:
-    - name: eks-demo-node-group # 클러스터의 노드 그룹명
-    instanceType: m5.large # 클러스터 워커 노드의 인스턴스 타입
-    desiredCapacity: 3 # 클러스터 워커 노드의 갯수
-    volumeSize: 10  # 클러스터 워커 노드의 EBS 용량 (단위: GiB)
-    iam:
-        withAddonPolicies:
-        ImageBuilder: true # AWS ECR에 대한 권한 추가
-        albIngress: true  # alb ingress에 대한 권한 추가
-
-    cloudWatch:
-    clusterLogging:
-        enableTypes: ["*"]
+      - name: eks-demo-node-group # 클러스터의 노드 그룹명
+        instanceType: m5.large # 클러스터 워커 노드의 인스턴스 타입
+        desiredCapacity: 3 # 클러스터 워커 노드의 갯수
+        volumeSize: 10  # 클러스터 워커 노드의 EBS 용량 (단위: GiB)
+        iam:
+          withAddonPolicies:
+            ImageBuilder: true # AWS ECR에 대한 권한 추가
+            albIngress: true  # alb ingress에 대한 권한 추가
+        
+        cloudWatch:
+          clusterLogging:
+            enableTypes: ["*"]
     EOF
     ```
 2. 아래의 명령어를 통해, 클러스터를 배포합니다.
