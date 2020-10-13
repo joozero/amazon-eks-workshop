@@ -23,7 +23,7 @@ eksctl create cluster
     kind: ClusterConfig
 
     metadata:
-      name: eks-demo- # 생성할 EKS 클러스터명
+      name: eks-demo # 생성할 EKS 클러스터명
       region: ap-northeast-2 # 클러스터를 생성할 리젼
       version: "1.17"
     
