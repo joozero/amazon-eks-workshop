@@ -18,7 +18,7 @@ AWS Cloud9으로 IDE를 구축하는 순서는 아래와 같습니다.
 
 1. AWS Cloud9 콘솔창에 접속한 후, **Create environment** 버튼을 클릭합니다.
 2. IDE 이름을 적은 후, Next step을 클릭합니다. 본 실습에서는 `eks-workspace`로 입력합니다.
-3. 인스턴스 타입을 **t3.small**로 선택한 후, Next step을 클릭하여 지정한 속성 값을 확인한 후, **Create environment**를 클릭합니다.
+3. 인스턴스 타입을 other instance type 라디오 버튼을 클릭 후, **t3.medium**으로 선택한 후, Next step을 클릭하여 지정한 속성 값을 확인한 후, **Create environment**를 클릭합니다.
 4. 생성이 완료되면 아래와 같은 화면이 나타납니다.
 ![AWS cloud9](/images/workspace/aws_cloud9_01.png)
 
@@ -44,7 +44,7 @@ IAM Role은 특정 권한을 가진 IAM 자격 증명입니다. IAM 역할의 �
 AWS Cloud9 환경은 EC2 인스턴스로 구동됩니다. 따라서 EC2 콘솔에서 AWS Cloud9 인스턴스에 방금 생성한 IAM Role을 부여합니다.
 
 1. [여기](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workspace.*;sort=desc:launchTime)를 클릭하여 EC2 인스턴스 페이지에 접속합니다.
-2. 해당 인스턴스를 선택 후, **Actions > Instance Settings > Attach/Replace IAM Role**을 클릭합니다.
+2. 해당 인스턴스를 선택 후, **Actions > Instance Settings > Modify IAM Role**을 클릭합니다.
 ![AWS Cloud9 Instance](/images/workspace/aws_cloud9_03.png)
 3. IAM Role에서 `eksworkspace-admin`을 선택한 후, **Apply** 버튼을 클릭합니다.
 ![AWS Cloud9 Instance](/images/workspace/aws_cloud9_04.png)

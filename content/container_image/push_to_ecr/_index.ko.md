@@ -21,26 +21,32 @@ pre: "<b>4-2  </b>"
     aws ecr create-repository \
     --repository-name demo-flask-backend \
     --image-scanning-configuration scanOnPush=true \
-    --region ap-southeast-1
+    --region ap-northeast-2
     ```
     해당 CLI를 입력하면 리포지토리에 대한 정보가 결과 값으로 도출됩니다. 또한, [Amazon ECR 콘솔창](https://console.aws.amazon.com/ecr/home)에서도 생성된 리포지토리를 확인할 수 있습니다.
+
+* * *
+{{% notice warning %}}
+아래의 작업의 경우, 개인 계정 정보가 들어갑니다. [Amazon ECR 콘솔창](https://console.aws.amazon.com/ecr/home)에서 방금 생성한 리포지토리를 클릭 후, 우측 상단의 **View push commands**를 클릭하면 아래와 같은 가이드를 확인할 수 있습니다.
+{{% /notice  %}}
+
+![Amazon ECR push image](/images/container_image/amazon-ecr-push-process.png)
+
 3. 컨테이너 이미지를 리포지토리에 푸쉬하기 위해, 인증 토큰을 가지고 오고, 해당 인증 도큰을 **docker login** 명령어로 전달합니다. 이 때, 사용자 이름 값은 AWS로 명시하고, 인증하려는 Amazon ECR 레지스트리 URI를 지정합니다.
     ```
-    aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin [aws_account_id].dkr.ecr.ap-southeast-1.amazonaws.com
+    aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com
     ```
-4. 1번에서 다운 받은 소스 코드  위치(예: /home/ec2-user/environment/amazon-eks-flask)에 들어가 도커 이미지를 빌드하는 아래의 명령어를 입력합니다.
+4. 1번에서 **다운 받은 소스 코드  위치(예: /home/ec2-user/environment/amazon-eks-flask)** 에 들어가 도커 이미지를 빌드하는 아래의 명령어를 입력합니다.
     ```
     docker build -t demo-flask-backend .
     ```
 5. 이미지가 빌드되면 **docker tag 명령어**를 통해, 해당 이미지가 특정 리포지토리에 푸쉬될 수 있도록 설정합니다.
     ```
-    docker tag demo-flask-backend:latest [aws_account_id].dkr.ecr.ap-southeast-1.amazonaws.com/demo-flask-backend:latest
+    docker tag demo-flask-backend:latest {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
     ```
 6. **docker push 명령어**를 통해, 이미지를 리포지토리에 푸쉬합니다.
     ```
-    docker push [aws_account_id].dkr.ecr.ap-southeast-1.amazonaws.com/demo-flask-backend:latest
+    docker push {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
     ```
 7. Amazon ECR 콘솔창에서 방금 생성한 리포지토리를 클릭하면 아래의 화면처럼 이미지가 올라온 것을 확인할 수 있습니다.
     ![Amazon ECR Repository](/images/container_image/amazon-ecr-repository.png)
-
-# 리전 이름 바꾸기

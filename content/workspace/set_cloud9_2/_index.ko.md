@@ -22,5 +22,3 @@ pre: "<b>3-3  </b>"
     ```
     aws configure get default.region
     ```
-
-# account id 넣을지 말지 고민하기
