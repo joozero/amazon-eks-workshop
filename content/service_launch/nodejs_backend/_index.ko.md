@@ -14,7 +14,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     git clone https://github.com/joozero/amazon-eks-nodejs.git
     ```
 
-2. AWS CLI를 통해, 이미지 리포지토리를 생성합니다. 본 실습에서는 리포지토리 이름을 demo-nodejs-backend라고 설정합니다. 또한, 리전 값에는 EKS 클러스터를 배포할 리전 코드(예: ap-northeast-2)를 명시합니다.
+2. AWS CLI를 통해, 이미지 리포지토리를 생성합니다. 본 실습에서는 리포지토리 이름을 **demo-nodejs-backend**라고 설정합니다. 또한, 리전 값에는 EKS 클러스터를 배포할 리전 코드(예: ap-northeast-2)를 명시합니다.
     ```
     aws ecr create-repository \
     --repository-name demo-nodejs-backend \
@@ -26,7 +26,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
 
 * * *
 
-4. **demo-backend 폴더** (/home/ec2-user/environment/manifests/demo-backend)로 이동하여 아래의 값을 붙여넣습니다. 이 때, 이미지 값에는 **demo-nodejs-backend** 리포지토리 URI 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다. 
+1. **manifests 폴더** (/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 이 때, 이미지 값에는 **demo-nodejs-backend** 리포지토리 URI 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다. 
     ```
     cat <<EOF> nodejs-deployment.yaml
     ---
@@ -47,7 +47,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
         spec:
           containers:
             - name: demo-nodejs-backend
-              image: {demo-nodejs-backend repository URI}
+              image: {demo-nodejs-backend repository URI:latest}
               imagePullPolicy: Always
               ports:
                 - containerPort: 3000
@@ -102,10 +102,10 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     EOF
     ```
 
-5. 매니페스트를 배포합니다.
+2. 매니페스트를 배포합니다.
     ```
     kubectl apply -f nodejs-deployment.yaml
     kubectl apply -f nodejs-service.yaml
     kubectl apply -f ingress.yaml
     ```
-6. 인그레스 **ADDRESS 값 + /services/all** 을 붙여 API 값을 확인합니다. 
+3. 인그레스 **ADDRESS 값 + /services/all** 을 붙여 API 값을 확인합니다. 
