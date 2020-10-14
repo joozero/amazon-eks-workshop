@@ -96,9 +96,15 @@ pre: "<b>7-3 </b>"
                   servicePort: 80
     EOF
     ```
-6. 아래의 명령어로 도출된 값 중, ADDRESS 값을 확인한 후, 웹 브라우저에 해당 주소를 입력합니다.
+6. 매니페스트를 배포합니다.
+    ```
+    kubectl apply -f frontend-deployment.yaml
+    kubectl apply -f frontend-service.yaml
+    kubectl apply -f frontend-ingress.yaml
+    ```
+7. 아래의 명령어로 도출된 값 중, ADDRESS 값을 확인한 후, 웹 브라우저에 해당 주소를 입력합니다.
     ```
     kubectl get ingress/frontend-ingress
     ```
-7. 아래와 같은 화면이 나오면 모든 컨테이너들이 정상적으로 작동하는 것입니다.
+8. 아래와 같은 화면이 나오면 모든 컨테이너들이 정상적으로 작동하는 것입니다.
    ![demo page](/images/service_launch/demo-complete-page.png)

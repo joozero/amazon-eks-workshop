@@ -109,3 +109,6 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     kubectl apply -f ingress.yaml
     ```
 3. 인그레스 **ADDRESS 값 + /services/all** 을 붙여 API 값을 확인합니다. 
+    ```
+    http://{backend-ingress ADDRESS value}/services/all
+    ```
