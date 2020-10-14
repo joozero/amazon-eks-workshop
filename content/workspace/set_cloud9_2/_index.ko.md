@@ -22,3 +22,7 @@ pre: "<b>3-3  </b>"
     ```
     aws configure get default.region
     ```
+
+{{% notice info %}}
+리전을 명시해주지 않으면 클러스터를 배포한 후, 관련 정보를 확인할 때 에러가 뜰 확률이 높습니다.
+{{% /notice %}}

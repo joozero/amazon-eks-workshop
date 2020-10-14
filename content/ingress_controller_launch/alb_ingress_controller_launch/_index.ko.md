@@ -13,7 +13,7 @@ ALB 인그레스 컨트롤러에서 지원하는 **트래픽 모드**는 아래�
 - Instance(default): 클러스터 내 노드를 ALB의 대상으로 등록합니다. ALB에 도달하는 트래픽은 NodePort로 라우팅된 다음 파드로 프록시됩니다.
 - IP: 파드를 ALB 대상으로 등록합니다. ALB에 도달하는 트래픽은 파드로 직접 라우팅됩니다. 해당 트래픽 모드를 사용하기 위해선 ingress.yaml 파일에 주석을 사용하여 명시적으로 지정해야 합니다.
 
-![](/images/ingress_controller_launch/alb-traffic-mode.png)
+![](/images/ingress_controller_launch/alb-ingress-controller-traffic-mode.svg)
 
 * * *
 {{% notice note %}}
@@ -44,35 +44,39 @@ mkdir -p manifests/alb-ingress-controller
     --aws-vpc-id=vpc-{your vpc id}
     --aws-region=ap-northeast-2
     ```
+
     수정한 결과로 도출되는 매니페스트(alb-ingress-controller.yaml)는 아래와 같습니다
-    ```
-    apiVersion: apps/v1
-    kind: Deployment
+
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: alb-ingress-controller
+  name: alb-ingress-controller
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: alb-ingress-controller
+  template:
     metadata:
-    labels:
+      labels:
         app.kubernetes.io/name: alb-ingress-controller
-    name: alb-ingress-controller
-    namespace: kube-system
     spec:
-    selector:
-        matchLabels:
-        app.kubernetes.io/name: alb-ingress-controller
-    template:
-        metadata:
-        labels:
-            app.kubernetes.io/name: alb-ingress-controller
-        spec:
-        containers:
-            - name: alb-ingress-controller
-            args:
-                - --ingress-class=alb
-                - --cluster-name=eks-demo-cluster
-                - --aws-vpc-id=vpc-{your vpc id}
-                - --aws-region=ap-northeast-2
-            env:
-            image: docker.io/amazon/aws-alb-ingress-controller:v1.1.8
-        serviceAccountName: alb-ingress-controller
-    ```
+      containers:
+        - name: alb-ingress-controller
+          args:
+            - --ingress-class=alb
+            - --cluster-name=eks-demo
+            - --aws-vpc-id=vpc-{your vpc id}
+            - --aws-region=ap-northeast-2
+          env:
+          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.8
+      serviceAccountName: alb-ingress-controller
+```
+
 4. RBAC roles 매니페스트를 배포합니다.
     ```
     kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.8/docs/examples/rbac-role.yaml
@@ -87,7 +91,17 @@ mkdir -p manifests/alb-ingress-controller
     ```
     클러스터 내부에서 필요한 기능들을 위해 실행되는 파드들을 애드온(Addon)이라고 합니다. 애드온에 사용되는 파드들은 디플로이먼트, 리플리케이션 컨트롤러 등에 의해 관리됩니다. 그리고 이 애드온이 사용하는 네임스페이스가 kube-system입니다.
 
-    alb-ingress-controller 매니페스트에서 네임스페이스를 kube-system으로 명시했기에 아래의 명령어를 통해 배포된 사실을 확인할 수 있습니다.
+    alb-ingress-controller 매니페스트에서 네임스페이스를 kube-system으로 명시했기에 아래의 명령어를 통해 파드 정보가 도출되면 정상적으로 배포된 것입니다.
     ```
-    kubectl get pod -n kube-system -o wide
+    kubectl get pod -n kube-system | grep alb
+    
+    # 결과값 예시
+    alb-ingress-controller-64949b9c6-vkwcd   1/1     Running   0          5m37s
+    ```
+    또한, 아래의 명령어로 자세한 속성 값을 파악할 수 있습니다.
+    ```
+    kubectl describe pod -n kube-system {alb-ingress-controller pod name}
+
+    # 입력값 예시
+    kubectl describe pod -n kube-system alb-ingress-controller-64949b9c6-vkwcd
     ```

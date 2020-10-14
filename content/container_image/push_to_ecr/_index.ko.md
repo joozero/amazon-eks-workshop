@@ -50,3 +50,7 @@ pre: "<b>4-2  </b>"
     ```
 7. Amazon ECR 콘솔창에서 방금 생성한 리포지토리를 클릭하면 아래의 화면처럼 이미지가 올라온 것을 확인할 수 있습니다.
     ![Amazon ECR Repository](/images/container_image/amazon-ecr-repository.png)
+
+{{% notice warning %}}
+도커 이미지를 빌드하는 동안, AWS Cloud9에서 용량 부족 이슈가 발생할 수 있습니다. 이때, **docker 경로 변경** 혹은 **docker rmi {IMAGE ID}** 를 통해 불필요한 이미지를 삭제하고 진행합니다.
+{{% /notice %}}

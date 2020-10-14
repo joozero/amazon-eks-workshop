@@ -13,7 +13,7 @@ pre: "<b>  </b>"
 * * *
 
 [여기](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)를 클릭하여 **배포할 Amazon EKS 버전과 상응하는 kubectl를 설치**합니다.
-본 실습에서는 가장 최신의 kubectl 바이너리를 설치합니다(2020년 10월 기준 1.17).
+본 실습에서는 가장 최신의 kubectl 바이너리를 설치합니다(2020년 10월 기준 1.18).
 ```
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/kubectl
 ```

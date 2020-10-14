@@ -14,7 +14,6 @@ pre: "<b> </b>"
 sudo pip install --upgrade awscli
 ```
 
-
 아래의 명령어를 통해, 버전을 확인합니다. 이때 1.18.124 >= version 혹은 2.0.42 >= version을 만족해야 합니다.
 ```
 aws --version

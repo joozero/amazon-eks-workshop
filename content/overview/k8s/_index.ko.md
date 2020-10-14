@@ -34,7 +34,7 @@ pre: "<b>  </b>"
 
 쿠버네티스의 객체에는 파드(pod), 서비스(service), 디플로이먼트(Deployment) 등이 있습니다.
 
-{{% notice note %}}
+{{% notice tip %}}
 보다 자세한 내용은 [쿠버네티스 공식 홈페이지](https://kubernetes.io/)를 통해 확인하세요.
 {{% /notice %}}
 

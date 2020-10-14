@@ -35,7 +35,7 @@ pre: "<b>4-1  </b>"
     ```
 2. **docker build 명령어**로 이미지를 만듭니다.  name에는 컨테이너 이미지 이름을 기재하고 tag의 경우, 따로 작성하지 않으면 latest라는 값을 가지게 됩니다.
     ```
-    docker build -t [name:tag] . 
+    docker build -t {name:tag} . 
     ```
     본 실습에서는 아래와 같이 명령어를 작성합니다. 
     ```

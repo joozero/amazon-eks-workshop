@@ -37,28 +37,37 @@ eksctl create cluster
         volumeSize: 10  # 클러스터 워커 노드의 EBS 용량 (단위: GiB)
         iam:
           withAddonPolicies:
-            ImageBuilder: true # AWS ECR에 대한 권한 추가
+            imageBuilder: true # AWS ECR에 대한 권한 추가
             albIngress: true  # alb ingress에 대한 권한 추가
+            cloudWatch: true
         
         cloudWatch:
           clusterLogging:
             enableTypes: ["*"]
     EOF
     ```
-2. 아래의 명령어를 통해, 클러스터를 배포합니다.
+{{% notice info %}}
+클러스터 컨피그 파일을 보면, **iam.attachPolicyARNs**를 통해 정책들을 정의할 수 있고, **iam.withAddonPolicies**를 통해, add-on 정책 또한 정의할 수 있습니다. EKS 클러스터가 배포된 후, EC2 콘솔창에서 워커 노드로 배포된 인스턴스의 IAM Role을 확인하면 추가한 권한들을 확인할 수 있습니다. 
+{{% /notice %}}
+
+1. 아래의 명령어를 통해, 클러스터를 배포합니다.
    ```
     eksctl create cluster -f eks-demo-cluster.yaml
     ```
     클러스터가 완전히 배포되는데까지 약 15분 ~ 20분 정도 소요됩니다. AWS Cloud9 터미널 창에서 클러스터 배포 진행 사항을 파악할 수 있고, AWS CloudFormation 콘솔창에서도 이벤트 및 리소스 등의 상태를 파악할 수 있습니다. 
-3. 배포가 완료되면 아래의 명령어를 통해, 노드가 제대로 배포되었는지 확인합니다.
+2. 배포가 완료되면 아래의 명령어를 통해, 노드가 제대로 배포되었는지 확인합니다.
     ```
     kubectl get nodes 
     ```
-4. 또한, **~/.kube/config**에 클러스터 자격 증명이 더해진 것을 확인할 수 있습니다.
+3. **~/.kube/config**에 클러스터 자격 증명이 더해진 것을 확인할 수 있습니다.
 
 * * *
 
 #### 현재의 아키텍처
-eksctl로 클러스터를 생성한 후, 현재까지 구성된 서비스의 아키텍처는 아래와 같습니다.
+eksctl로 쿠버네티스 클러스터를 생성한 후, 현재까지 구성된 서비스의 아키텍처는 아래와 같습니다.
 
-![current architecture](/images/eks_launch/current-architecture.svg)
+![current architecture](/images/eks_launch/current-architecture01.svg)
+
+[Amazon EKS 콘솔창](https://console.aws.amazon.com/eks)에서 해당 클러스터 정보를 확인할 수 있습니다. 컨트롤 플레인 단의 정보 및 워커 노드 정보, 로깅 활성화 정보, 업데이트 정보 등을 파악할 수 있습니다.
+
+![Amazon EKS console](/images/eks_launch/eks-console.png)
