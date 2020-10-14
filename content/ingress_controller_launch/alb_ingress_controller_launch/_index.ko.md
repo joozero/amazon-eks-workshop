@@ -48,7 +48,6 @@ mkdir -p manifests/alb-ingress-controller
 수정한 결과로 도출되는 매니페스트(alb-ingress-controller.yaml)는 아래와 같습니다
 
 ```
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
