@@ -1,6 +1,6 @@
 ---
 date: 2020-09-03
-title: "백앤드 배포하기"
+title: "첫번째 백앤드 배포하기"
 weight: 610
 pre: "<b>7-1  </b>"
 ---
@@ -65,7 +65,7 @@ pre: "<b>7-1  </b>"
 
 4. 마지막으로 ingress 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
     ```
-    cat <<EOF> flask-ingress.yaml
+    cat <<EOF> ingress.yaml
     ---
     apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
@@ -91,7 +91,7 @@ pre: "<b>7-1  </b>"
     ```
     kubectl apply -f flask-deployment.yaml
     kubectl apply -f flask-service.yaml
-    kubectl apply -f flask-ingress.yaml
+    kubectl apply -f ingress.yaml
     ```
 6. 아래의 명렁어로 도출된 값 중, ADDRESS 값을 확인합니다.
     ```
