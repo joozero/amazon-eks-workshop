@@ -47,7 +47,7 @@ eksctl create cluster
     EOF
     ```
 {{% notice info %}}
-클러스터 컨피그 파일을 보면, **iam.attachPolicyARNs**를 통해 정책들을 정의할 수 있고, **iam.withAddonPolicies**를 통해, add-on 정책 또한 정의할 수 있습니다. EKS 클러스터가 배포된 후, EC2 콘솔창에서 워커 노드로 배포된 인스턴스의 IAM Role을 확인하면 추가한 권한들을 확인할 수 있습니다. 
+클러스터 컨피그 파일을 보면, **iam.attachPolicyARNs**를 통해 정책들을 정의할 수 있고, **iam.withAddonPolicies**를 통해, add-on 정책 또한 정의할 수 있습니다. EKS 클러스터가 배포된 후, EC2 콘솔창에서 워커 노드로 배포된 인스턴스의 IAM Role을 확인하면 추가된 권한들을 확인할 수 있습니다. 
 {{% /notice %}}
 
 1. 아래의 명령어를 통해, 클러스터를 배포합니다.

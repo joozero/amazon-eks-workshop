@@ -76,31 +76,33 @@ spec:
       serviceAccountName: alb-ingress-controller
 ```
 
-4. RBAC roles 매니페스트를 배포합니다.
+4. AWS ALB Ingress Controller를 배포하기 전, IAM OIDC 
+5. RBAC roles 매니페스트를 배포합니다. 쿠버네티스 RBAC(Role-based access control)이란 역할 기반 권한 관리입니다. 
     ```
     kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.8/docs/examples/rbac-role.yaml
     ```
-5. 2번에서 수정한 ALB 인그레스 컨트롤러 매니페스트 파일을 배포합니다.
+    [!] 해당 매니페스트에는 클러스터롤과 클러스터롤 바인딩 그리고 서비스 어카운트가 기재되어 있습니다.
+6. 2번에서 **수정한 ALB 인그레스 컨트롤러 매니페스트 파일** 을 배포합니다.
     ```
     kubectl apply -f alb-ingress-controller.yaml
     ```
-6. 배포가 성공적으로 되고 컨트롤러가 실행되는지 아래의 명령어를 통해 확인합니다.
+7. 배포가 성공적으로 되고 컨트롤러가 실행되는지 아래의 명령어를 통해 확인합니다.
     ```
-    kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o "alb-ingress[a-zA-Z0-9-]+")
+    kubectl get pod -n kube-system | egrep -o "alb-ingress[a-zA-Z0-9-]+"
+
+    # 결과값 예시
+    alb-ingress-controller-xxxxxxxxx
     ```
     클러스터 내부에서 필요한 기능들을 위해 실행되는 파드들을 애드온(Addon)이라고 합니다. 애드온에 사용되는 파드들은 디플로이먼트, 리플리케이션 컨트롤러 등에 의해 관리됩니다. 그리고 이 애드온이 사용하는 네임스페이스가 kube-system입니다.
 
-    alb-ingress-controller 매니페스트에서 네임스페이스를 kube-system으로 명시했기에 아래의 명령어를 통해 파드 정보가 도출되면 정상적으로 배포된 것입니다.
+    alb-ingress-controller 매니페스트에서 네임스페이스를 kube-system으로 명시했기에 위의 명령어로 파드 이름이 도출되면 정상적으로 배포된 것입니다. 또한, 아래의 명령어로 관련 로그를 확인할 수 있습니다. 
     ```
-    kubectl get pod -n kube-system | grep alb
-
-    # 결과값 예시
-    alb-ingress-controller-64949b9c6-vkwcd   1/1     Running   0          5m37s
+    kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o "alb-ingress[a-zA-Z0-9-]+")
     ```
     또한, 아래의 명령어로 자세한 속성 값을 파악할 수 있습니다.
     ```
     kubectl describe pod -n kube-system {alb-ingress-controller pod name}
 
     # 입력값 예시
-    kubectl describe pod -n kube-system alb-ingress-controller-64949b9c6-vkwcd
+    kubectl describe pod -n kube-system alb-ingress-controller-xxxxxxxxx
     ```
