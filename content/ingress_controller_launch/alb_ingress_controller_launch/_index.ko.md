@@ -45,7 +45,7 @@ mkdir -p manifests/alb-ingress-controller
     --aws-region=ap-northeast-2
     ```
 
-    수정한 결과로 도출되는 매니페스트(alb-ingress-controller.yaml)는 아래와 같습니다
+수정한 결과로 도출되는 매니페스트(alb-ingress-controller.yaml)는 아래와 같습니다
 
 ```
 ---
@@ -94,7 +94,7 @@ spec:
     alb-ingress-controller 매니페스트에서 네임스페이스를 kube-system으로 명시했기에 아래의 명령어를 통해 파드 정보가 도출되면 정상적으로 배포된 것입니다.
     ```
     kubectl get pod -n kube-system | grep alb
-    
+
     # 결과값 예시
     alb-ingress-controller-64949b9c6-vkwcd   1/1     Running   0          5m37s
     ```
