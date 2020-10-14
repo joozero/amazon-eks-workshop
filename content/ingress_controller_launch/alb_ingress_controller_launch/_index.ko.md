@@ -9,6 +9,7 @@ pre: "<b>6-1  </b>"
 [Amazon EKS의 ALB 인그레스 컨트롤러](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)란 클러스터에 인그레스 자원이 생성될 때에 ALB(Application Load Balancer) 및 필요한 자원이 생성되도록 트리거하는 컨트롤러입니다. 인그레스 자원들은 ALB를 구성하여 HTTP 또는 HTTPS 트래픽을 클러스터 내 파드로 라우팅합니다.
 
 ALB 인그레스 컨트롤러에서 지원하는 **트래픽 모드**는 아래의 두 가지입니다.
+
 - Instance(default): 클러스터 내 노드를 ALB의 대상으로 등록합니다. ALB에 도달하는 트래픽은 NodePort로 라우팅된 다음 파드로 프록시됩니다.
 - IP: 파드를 ALB 대상으로 등록합니다. ALB에 도달하는 트래픽은 파드로 직접 라우팅됩니다. 해당 트래픽 모드를 사용하기 위해선 ingress.yaml 파일에 주석을 사용하여 명시적으로 지정해야 합니다.
 
