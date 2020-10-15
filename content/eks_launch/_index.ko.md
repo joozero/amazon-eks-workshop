@@ -6,6 +6,7 @@ pre: "<b>5.  </b>"
 ---
 
 Amazon EKS 클러스터는 다양한 방식으로 배포될 수 있습니다.
+
 - [AWS 콘솔 창](https://console.aws.amazon.com/eks/home#/)에서 클릭으로 배포하는 방법
 - [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) 혹은 [AWS CDK](https://docs.aws.amazon.com/cdk/api/latest/)와 같은 IaC(Infrastructure as Code) 도구를 사용해 배포하는 방법
 - EKS의 공식 CLI인 [eksctl](https://eksctl.io/)로 배포하는 방법
