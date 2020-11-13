@@ -40,10 +40,10 @@ eksctl create cluster
             imageBuilder: true # AWS ECR에 대한 권한 추가
             albIngress: true  # alb ingress에 대한 권한 추가
             cloudWatch: true
-        
-        cloudWatch:
-          clusterLogging:
-            enableTypes: ["*"]
+  
+    cloudWatch:
+      clusterLogging:
+        enableTypes: ["*"]
     EOF
     ```
 {{% notice info %}}

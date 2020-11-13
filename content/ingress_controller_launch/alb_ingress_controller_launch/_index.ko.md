@@ -78,7 +78,7 @@ spec:
 
 4. AWS ALB Ingress Controller를 배포하기 전, IAM OIDC Identity Provider를 생성합니다.
     ```
-    eksctl utils associate-iam-odic-provider --cluster eks-demo --approve
+    eksctl utils associate-iam-oidc-provider --cluster eks-demo --approve
     ```
     [!] 생성한 IAM OIDC 자격 증명 공급자는 IAM 콘솔 Identity providers 메뉴에서 확인할 수 있습니다.
 5. RBAC roles 매니페스트를 배포합니다. 쿠버네티스 RBAC(Role-based access control)이란 역할 기반 권한 관리입니다. 
