@@ -22,7 +22,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     --region ap-northeast-2
     ```
 
-3. 그 다음 Amazon ECR 리포지토리에 컨테이너 이미지 올리는 방법은 [4-2 Amazon ECR에 이미지 올리기](https://master.d3s71i2n51x60t.amplifyapp.com/ko/container_image/push_to_ecr/) 가이드를 참고합니다. 
+3. 그 다음 Amazon ECR 리포지토리에 컨테이너 이미지 올리는 방법은 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/) 가이드를 참고합니다. 
 
 * * *
 
@@ -73,7 +73,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
           protocol: TCP
     EOF
     ```
-    [!] 인그레스 매니페스트 파일은 [7-1 첫 번째 백앤드 배포하기](https://master.d3s71i2n51x60t.amplifyapp.com/ko/service_launch/flask_backend/)에 있는 파일을 수정합니다. 
+    [!] 인그레스 매니페스트 파일은 [7-1 첫 번째 백앤드 배포하기](../../service_launch/flask_backend/)에 있는 파일을 수정합니다. 
 
     ```
     cat <<EOF> ingress.yaml

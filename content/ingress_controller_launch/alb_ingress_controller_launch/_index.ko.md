@@ -31,7 +31,7 @@ mkdir -p manifests/alb-ingress-controller
     ```
     wget https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.8/docs/examples/alb-ingress-controller.yaml
     ```
-2. 매니페스트 파일에서 --cluster-name=devCluster 값을 [5-1에서 생성한 클러스터 이름](https://master.d3s71i2n51x60t.amplifyapp.com/ko/ingress_controller_launch/)으로 변경한 후, 저장합니다. 본 실습에서는 **eks-demo**로 설정합니다.
+2. 매니페스트 파일에서 --cluster-name=devCluster 값을 [5-1에서 생성한 클러스터 이름](../../eks_launch/eks_launch_with_eksctl/)으로 변경한 후, 저장합니다. 본 실습에서는 **eks-demo**로 설정합니다.
     ```
     --cluster-name=eks-demo
     ```

@@ -10,8 +10,8 @@ pre: "<b>2. </b>"
 실습을 시작하기 전, 아래 두 가지 지침서 중 하나를 선택해서 AWS 서비스를 사용할 계정을 준비합니다.
 {{% /notice %}}
 
-- [AWS 계정으로 시작하기](https://master.d3s71i2n51x60t.amplifyapp.com/ko/settings/create_aws_account/)
-- [AWS 이벤트 엔진으로 시작하기](https://master.d3s71i2n51x60t.amplifyapp.com/ko/settings/create_aws_workshop_portal/)
+- [AWS 계정으로 시작하기](../../settings/create_aws_account/)
+- [AWS 이벤트 엔진으로 시작하기](../../settings/create_aws_workshop_portal/)
 
 
 사전 준비가 완료되면 실습을 진행하면 됩니다.

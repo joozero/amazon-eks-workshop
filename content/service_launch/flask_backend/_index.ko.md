@@ -11,7 +11,7 @@ pre: "<b>7-1  </b>"
 본 실습을 진행하기 위해 **4-2 Amazon ECR에 이미지 올리기** 실습 부분이 선행되어야 합니다.
 {{% /notice %}}
 
-1. **manifests 폴더** 위치(/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 이 때, **이미지** 값에는 [4-2 Amazon ECR에 이미지 올리기](https://master.d3s71i2n51x60t.amplifyapp.com/ko/container_image/push_to_ecr/)에서 생성한 **리포지토리 URI** 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다.
+1. **manifests 폴더** 위치(/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 이 때, **이미지** 값에는 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/)에서 생성한 **리포지토리 URI** 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다.
     ```
     cat <<EOF> flask-deployment.yaml
     ---
