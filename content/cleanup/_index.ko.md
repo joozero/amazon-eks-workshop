@@ -10,15 +10,23 @@ pre: "<b>   </b>"
 
 1. 인그레스 자원들을 삭제합니다.
     ```
-    kubectl delete -f 
+    kubectl delete -f ingress.yaml
+    kubectl delete -f frontend-ingress.yaml
     ```
 2. 생성한 eks 클러스터를 삭제합니다.
     ```
     eksctl delete cluster --name=eks-demo
     ```
+    [!] AWS CloudFormation 콘솔에서 관련 스택이 모두 삭제된 것을 확인합니다.
 3. 생성한 ECR 저장소를 삭제합니다.
     아래의 명령어를 통해, 생성한 저장소 리스트를 불러옵니다.
    ```
     aws ecr describe-repositories
-    ```
+   ```
+   ```
+   aws ecr delete-repository --repository-name demo-flask-backend
+   aws ecr delete-repository --repository-name demo-nodejs-backend
+   aws ecr delete-repository --repository-name demo-frontend
+   ```
+    
 4. 생성한 Cloud9 IDE 환경을 삭제합니다.
