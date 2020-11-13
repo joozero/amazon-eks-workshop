@@ -108,3 +108,10 @@ pre: "<b>7-3 </b>"
     ```
 8. 아래와 같은 화면이 나오면 모든 컨테이너들이 정상적으로 작동하는 것입니다.
    ![demo page](/images/service_launch/demo-complete-page.png)
+
+* * *
+
+#### 현재의 아키텍처
+인그레스 컨트롤러 배포 및 서비스 배포 후, 현재까지 구성된 서비스의 아키텍처는 아래와 같습니다.
+
+![current architecture](/images/service_launch/current-architecture.svg)
