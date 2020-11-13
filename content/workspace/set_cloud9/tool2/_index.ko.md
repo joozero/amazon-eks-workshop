@@ -15,7 +15,7 @@ pre: "<b>  </b>"
 [여기](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)를 클릭하여 **배포할 Amazon EKS 버전과 상응하는 kubectl를 설치**합니다.
 본 실습에서는 가장 최신의 kubectl 바이너리를 설치합니다(2020년 10월 기준 1.18).
 ```
-curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/kubectl
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
 ```
 kubectl 바이너리를 실행 가능하게 변경해줍니다.
 ```
@@ -31,5 +31,5 @@ kubectl version --client=true --short=true
 ```
 아래와 같은 결과 값이 출력되는 것을 확인할 수 있습니다.
 ```
-Client Version: v1.17.9-eks-4c6976
+Client Version: v1.18.9-eks-d1db3c
 ```

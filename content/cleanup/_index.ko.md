@@ -16,6 +16,17 @@ pre: "<b>   </b>"
     ```
 2. 워크샵을 위해 생성한 eks 클러스터를 삭제합니다. 이때, [8-2 Cluster AutoScaler 적용하기](../../eks_scaling/scale_by_autoscaler)에서 워커 노드에 붙여준 IAM 정책을 제거합니다.
     ```
+    CA_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`ClusterAutoScaler`].Arn' --output text)
+    ```
+
+    ```
+    NODE_ROLE=$(aws eks describe-nodegroup --cluster-name eks-demo --nodegroup-name eks-demo-node-group --query nodegroup.nodeRole --output text | grep -o '/.*' | cut -f2- -d/)
+    ```
+    
+    ```
+    aws iam detach-role-policy --role-name ${NODE_ROLE} --policy-arn ${CA_ARN}
+    ```
+    ```
     eksctl delete cluster --name=eks-demo
     ```
     [!] AWS CloudFormation 콘솔에서 관련 스택이 모두 삭제된 것을 확인합니다.

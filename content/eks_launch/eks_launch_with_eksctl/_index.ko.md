@@ -25,7 +25,7 @@ eksctl create cluster
     metadata:
       name: eks-demo # 생성할 EKS 클러스터명
       region: ap-northeast-2 # 클러스터를 생성할 리젼
-      version: "1.17"
+      version: "1.18"
     
     vpc:
       cidr: "192.168.0.0/16" # 클러스터에서 사용할 VPC의 CIDR

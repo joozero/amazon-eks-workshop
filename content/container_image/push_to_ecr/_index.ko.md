@@ -41,8 +41,10 @@ pre: "<b>4-2  </b>"
     docker build -t demo-flask-backend .
     ```
 {{% notice warning %}}
-도커 이미지를 빌드하는 동안, AWS Cloud9에서 용량 부족 이슈가 발생할 수 있습니다. 이때, **docker 이미지 저장소 경로 변경** 혹은 **docker rmi {IMAGE ID}** 를 통해 불필요한 이미지를 삭제하고 진행합니다.
+도커 이미지를 빌드하는 동안, AWS Cloud9에서 용량 부족 이슈(no space left on device)가 발생할 수 있습니다. 이때, **docker 이미지 저장소 경로 변경** 혹은 **docker rmi {IMAGE ID}** 를 통해 불필요한 이미지를 삭제하고 진행합니다. 임시 방편으로 아래의 명령어를 통해, 해당 이슈를 해결할 수 있습니다.
 {{% /notice %}}
+
+    docker rmi ${docker images -q lambci/lambda)
 
 5. 이미지가 빌드되면 **docker tag 명령어**를 통해, 해당 이미지가 특정 리포지토리에 푸쉬될 수 있도록 설정합니다.
     ```
