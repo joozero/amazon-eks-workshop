@@ -44,7 +44,7 @@ IAM Role은 특정 권한을 가진 IAM 자격 증명입니다. IAM 역할의 �
 AWS Cloud9 환경은 EC2 인스턴스로 구동됩니다. 따라서 EC2 콘솔에서 AWS Cloud9 인스턴스에 방금 생성한 IAM Role을 부여합니다.
 
 1. [여기](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workspace.*;sort=desc:launchTime)를 클릭하여 EC2 인스턴스 페이지에 접속합니다.
-2. 해당 인스턴스를 선택 후, **Actions > Instance Settings > Modify IAM Role**을 클릭합니다.
+2. 해당 인스턴스를 선택 후, **Actions > Security > Modify IAM Role**을 클릭합니다.
 ![AWS Cloud9 Instance](/images/workspace/aws_cloud9_03.png)
 3. IAM Role에서 `eksworkspace-admin`을 선택한 후, **Apply** 버튼을 클릭합니다.
 ![AWS Cloud9 Instance](/images/workspace/aws_cloud9_04.png)
