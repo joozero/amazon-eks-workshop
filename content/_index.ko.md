@@ -5,7 +5,7 @@ chapter: false
 weight: 1
 ---
 
-# Amazon EKS로 웹 페이지 구성하기
+# Amazon EKS로 웹 애플리케이션 구축하기
 * * *
 ![eks architecture](/images/k8s_architecture.svg)
 

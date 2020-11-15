@@ -5,7 +5,7 @@ weight: 250
 pre: "<b>  </b>"
 ---
 
-#### aws-iam-authenticator 설치하기
+#### aws-iam-authenticator 설치하기(deprecated)
 Amazon EKS는 kubernetes cluster 인증(authentication)을 위해, IAM을 사용합니다. 이를 위해, AWS IAM authenticator를 설치하고, 인증을 사용하기 위해 kubectl configuration을 변경합니다. 
 
 {{% notice warning %}}
