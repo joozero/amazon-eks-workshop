@@ -11,6 +11,5 @@ pre: "<b>3-2  </b>"
 
 - AWS CLI 업데이트
 - kubectl 설치
-- aws-iam-authenticator 설치
 -  jq, gettext, bash-completion 설치
 - eksctl 설치
