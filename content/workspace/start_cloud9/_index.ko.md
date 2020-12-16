@@ -5,7 +5,7 @@ weight: 210
 pre: "<b>3-1  </b>"
 ---
 
-AWS Cloud9으로 IDE를 구축하는 순서는 아래와 같습니다.
+AWS Cloud9으로 실습 환경을 구축하는 순서는 아래와 같습니다.
 
 - AWS Cloud9으로 IDE 구성
 - IAM Role 생성
@@ -16,10 +16,11 @@ AWS Cloud9으로 IDE를 구축하는 순서는 아래와 같습니다.
 
 #### AWS Cloud9으로 IDE 구성
 
-1. AWS Cloud9 콘솔창에 접속한 후, **Create environment** 버튼을 클릭합니다.
+1. [AWS Cloud9 콘솔창](https://console.aws.amazon.com/cloud9)에 접속한 후, **Create environment** 버튼을 클릭합니다.
 2. IDE 이름을 적은 후, Next step을 클릭합니다. 본 실습에서는 `eks-workspace`로 입력합니다.
-3. 인스턴스 타입을 other instance type 라디오 버튼을 클릭 후, **t3.medium**으로 선택한 후, Next step을 클릭하여 지정한 속성 값을 확인한 후, **Create environment**를 클릭합니다.
-4. 생성이 완료되면 아래와 같은 화면이 나타납니다.
+3. 인스턴스 타입(instance type)을 other instance type 라디오 버튼을 클릭 후, **t3.medium**으로 선택합니다.
+4. 플랫폼(platform)의 경우, **Amazon Linux 2 (recommended)** 를 선택하고, Next step을 클릭하여 지정한 속성 값을 확인한 후, **Create environment**를 클릭합니다.
+5. 생성이 완료되면 아래와 같은 화면이 나타납니다.
 ![AWS cloud9](/images/workspace/aws_cloud9_01.png)
 
 {{% notice info %}}
