@@ -13,7 +13,7 @@ pre: "<b>8-2  </b>"
 Cluster Autoscaler(CA)는 pending 상태인 파드가 존재할 경우, 워커 노드를 스케일 아웃합니다. 특정 시간을 간격으로 사용률을 확인하여 스케일 인/아웃을 수행합니다. 그리고 AWS에서는 Auto Scaling Group을 사용하여 Cluster Autoscaler를 적용합니다.
 
 ![CA scaling situation](/images/eks_scaling/k8s-ca-scaling-view.png)
-[!] 위의 이미지처럼 현재 클러스터의 상태를 시각화하기 위해선 [kube-ops-view](https://codeberg.org/hjacobs/kube-ops-view)를 참고합니다.
+[!] (선택) 위의 이미지처럼 현재 클러스터의 상태를 시각화하기 위해선 [kube-ops-view](https://codeberg.org/hjacobs/kube-ops-view)를 참고합니다.
 
 * * *
 

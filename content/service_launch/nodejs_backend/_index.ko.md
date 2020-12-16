@@ -11,6 +11,7 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
 
 1. 아래의 명령어를 통해, 컨테이너라이징할 소스 코드를 다운 받습니다.
     ```
+    cd /home/ec2-user/environment
     git clone https://github.com/joozero/amazon-eks-nodejs.git
     ```
 
@@ -22,12 +23,21 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     --region ap-northeast-2
     ```
 
-3. 그 다음 Amazon ECR 리포지토리에 컨테이너 이미지 올리는 방법은 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/) 가이드를 참고합니다. 
+3. 그 다음 Amazon ECR 리포지토리에 컨테이너 이미지를 푸시합니다. 자세한 설명은 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/) 가이드를 참고합니다. 
+
+    ```
+    cd amazon-eks-nodejs
+    docker build -t demo-nodejs-backend .
+    docker tag demo-nodejs-backend:latest ${ACCOUNT_ID}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-nodejs-backend:latest
+    docker push ${ACCOUNT_ID}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-nodejs-backend:latest
+    ```
 
 * * *
 
-1. **manifests 폴더** (/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 이 때, 이미지 값에는 **demo-nodejs-backend** 리포지토리 URI 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다. 
+1. **manifests 폴더** (/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 그 뒤 `nodejs-deployment.yaml` 파일을 열어 `image` 부분의 ACCOUNT_ID를 본인 것으로 교체합니다.
     ```
+    cd /home/ec2-user/environment/manifests
+
     cat <<EOF> nodejs-deployment.yaml
     ---
     apiVersion: apps/v1
@@ -47,13 +57,14 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
         spec:
           containers:
             - name: demo-nodejs-backend
-              image: {demo-nodejs-backend repository URI:latest}
+              image: $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/demo-nodejs-backend:latest
               imagePullPolicy: Always
               ports:
                 - containerPort: 3000
     EOF
     ```
 
+    
     ```
     cat <<EOF> nodejs-service.yaml
     ---
@@ -108,7 +119,8 @@ flask 백앤드와 마찬가지로 express 백앤드도 배포합니다. 순서�
     kubectl apply -f nodejs-service.yaml
     kubectl apply -f ingress.yaml
     ```
-3. 인그레스 **ADDRESS 값 + /services/all** 을 붙여 API 값을 확인합니다. 
+
+3. 다음 명령어 수행 결과를 웹 브라우저 및 API 플랫폼에 붙여넣어 확인합니다. 
     ```
-    http://{backend-ingress ADDRESS value}/services/all
+    echo http://$(kubectl get ingress/backend-ingress -o jsonpath='{.status.loadBalancer.ingress[*].hostname}')/services/all
     ```

@@ -1,7 +1,9 @@
-title = "Amazon EKS로 웹 페이지 구성하기"
-googleAnalytics = ""
-anguageCode = "ko-KR"
+CanonifyURLs=true
+languageCode = "ko-KR"
 defaultContentLanguage = "ko"
+googleAnalytics = ""
+
+title = "Amazon EKS로 웹 페이지 구성하기"
 theme = "hugo-theme-learn"
 showHeaderLanguageChooser=true
 defaultContentLanguageInSubdir= true
@@ -13,12 +15,16 @@ baseURL = "https://master.d3s71i2n51x60t.amplifyapp.com/"
 home = [ "HTML", "RSS", "JSON"]
 
 [params]
-  showVisitedLinks = false
+  description = "Build Web Application with Amazon EKS"
+  author = "Jooyoung Kim"
   disableBreadcrumb = false
   disableNextPrev = false
   themeVariant = "aws"
-  disableInlineCopyToClipBoard = false
-  author = "Jooyoung Kim"
+  disableSearch = false
+  disableAssetsBusting = true
+  disableLanguageSwitchingButton = false
+  disableShortcutsTitle = true
+  disableInlineCopyToClipBoard = true
 
 [[menu.shortcuts]] 
   name = "<i class='fab fa-aws'></i> EKS Workshop"
@@ -32,7 +38,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
   name = "<i class='fab fa-github'></i> Github for workshop code"
-  url = "https://github.com/joozero/amazon_eks"
+  url = "https://github.com/joozero/amazon-eks-flask"
   weight = 1020
 
 [[menu.shortcuts]]

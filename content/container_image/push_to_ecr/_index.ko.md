@@ -34,7 +34,7 @@ pre: "<b>4-2  </b>"
 
 3. 컨테이너 이미지를 리포지토리에 푸쉬하기 위해, 인증 토큰을 가지고 오고, 해당 인증 도큰을 **docker login** 명령어로 전달합니다. 이 때, 사용자 이름 값은 AWS로 명시하고, 인증하려는 Amazon ECR 레지스트리 URI를 지정합니다.
     ```
-    aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com
+    aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com
     ```
 4. 1번에서 **다운 받은 소스 코드  위치(예: /home/ec2-user/environment/amazon-eks-flask)** 에 들어가 도커 이미지를 빌드하는 아래의 명령어를 입력합니다.
     ```
@@ -48,11 +48,11 @@ pre: "<b>4-2  </b>"
 
 5. 이미지가 빌드되면 **docker tag 명령어**를 통해, 해당 이미지가 특정 리포지토리에 푸쉬될 수 있도록 설정합니다.
     ```
-    docker tag demo-flask-backend:latest {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
+    docker tag demo-flask-backend:latest $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
     ```
 6. **docker push 명령어**를 통해, 이미지를 리포지토리에 푸쉬합니다.
     ```
-    docker push {aws_account_id}.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
+    docker push $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/demo-flask-backend:latest
     ```
 7. Amazon ECR 콘솔창에서 방금 생성한 리포지토리를 클릭하면 아래의 화면처럼 이미지가 올라온 것을 확인할 수 있습니다.
     ![Amazon ECR Repository](/images/container_image/amazon-ecr-repository.png)

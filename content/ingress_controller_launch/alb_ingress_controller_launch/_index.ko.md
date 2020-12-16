@@ -21,8 +21,7 @@ ALB 인그레스 컨트롤러에서 지원하는 **트래픽 모드**는 아래�
 {{% /notice %}}
 
 ```
-mkdir -p manifests/alb-ingress-controller
-
+mkdir -p manifests/alb-ingress-controller && cd manifests/alb-ingress-controller
 # 최종 폴더 위치
 /home/ec2-user/environment/manifests/alb-ingress-controller
 ```
@@ -35,13 +34,19 @@ mkdir -p manifests/alb-ingress-controller
     ```
     --cluster-name=eks-demo
     ```
-3. 추가적으로 --aws-vpc-id=vpc-xxxxxx 값과 ---aws-region=us-west-1도 수정합니다. aws-vpc-id의 경우, 아래의 cli로 도출된 결과 값을 넣습니다.
+3. 다음 명령어를 수행하여 생성된 EKS 클러스터가 사용하는 VPC ID를 확인합니다. 다음 스크린샷을 참조하여 VPC ID를 합니다.
     ```
     eksctl get cluster --name eks-demo
     ```
+    ![](/images/ingress_controller_launch/eksctl-vpc-id.png)
 
+    alb-ingress-controller.yaml 로 돌아와 다음과 같이 수정합니다.
     ```
     --aws-vpc-id=vpc-{your vpc id}
+    ```
+    
+4. 아래와 같이 리전 값 역시 수정합니다.
+    ```
     --aws-region=ap-northeast-2
     ```
 
