@@ -19,7 +19,7 @@ HPA(Horizontal Pod Autoscaler) 컨트롤러는 메트릭 값에 값에 따라 �
     ```
     kubectl get deployment metrics-server -n kube-system
     ```
-3. 그 다음, [7-1 첫번째 백앤드 배포하기](../../service_launch/flask_backend/)에서 만들었던 flask deployment yaml 파일을 아래와 같이 수정합니다.
+3. 그 다음, [7-1 첫번째 백앤드 배포하기](../../service_launch/flask_backend/)에서 만들었던 flask deployment yaml 파일을 아래와 같이 수정합니다. URI를 본인 것으로 교체해야 함에 유의하십시오.
     ```
     cat <<EOF> flask-deployment.yaml
     ---

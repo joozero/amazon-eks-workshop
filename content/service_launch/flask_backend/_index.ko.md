@@ -11,7 +11,12 @@ pre: "<b>7-1  </b>"
 본 실습을 진행하기 위해 **4-2 Amazon ECR에 이미지 올리기** 실습 부분이 선행되어야 합니다.
 {{% /notice %}}
 
-1. **manifests 폴더** 위치(/home/ec2-user/environment/manifests)로 이동하여 아래의 값을 붙여넣습니다. 이 때, **이미지** 값에는 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/)에서 생성한 **리포지토리 URI** 값을 넣습니다. 해당 URI는 Amazon ECR 콘솔창에서 확인할 수 있습니다.
+1. **manifests 폴더** 위치(/home/ec2-user/environment/manifests)로 이동합니다.
+    ```
+    cd ..
+    ```
+
+2. 다음 명령어를 수행하여 manifest 를 생성합니다.
     ```
     cat <<EOF> flask-deployment.yaml
     ---
@@ -38,7 +43,12 @@ pre: "<b>7-1  </b>"
                 - containerPort: 8080
     EOF
     ```
-2. 그 다음 service 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
+3. 해당 파일을 열어 **이미지** 값에 [4-2 Amazon ECR에 이미지 올리기](../../container_image/push_to_ecr/)에서 생성한 **리포지토리 URI** 값을 넣습니다. 해당 URI는 [Amazon ECR 콘솔창](https://ap-northeast-2.console.aws.amazon.com/ecr/repositories/demo-flask-backend/?region=ap-northeast-2)에서 확인할 수 있습니다.
+
+    ![](/images/service_launch/ecr-uri.png)
+
+
+4. 그 다음 service 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
     ```
     cat <<EOF> flask-service.yaml
     ---
@@ -59,7 +69,7 @@ pre: "<b>7-1  </b>"
     EOF
     ```
 
-3. 마지막으로 ingress 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
+5. 마지막으로 ingress 매니페스트 파일을 생성하기 위해 아래의 값을 붙여 넣습니다.
     ```
     cat <<EOF> ingress.yaml
     ---
@@ -83,20 +93,16 @@ pre: "<b>7-1  </b>"
     EOF
     ```
 
-4.  위에서 생성한 매니페스트를 아래의 순서대로 배포합니다.
+6.  위에서 생성한 매니페스트를 아래의 순서대로 배포합니다.
     ```
     kubectl apply -f flask-deployment.yaml
     kubectl apply -f flask-service.yaml
     kubectl apply -f ingress.yaml
     ```
-5. 아래의 명렁어로 도출된 값 중, ADDRESS 값을 확인합니다.
+3. 다음 명령어 수행 결과를 웹 브라우저 및 API 플랫폼에 붙여넣어 확인합니다. 
     ```
-    kubectl get ingress/backend-ingress
-    ```
-6. 인그레스 **ADDRESS 값 + /contents/aws** 를 붙여 API 값을 웹 브라우저 및 API 플랫폼에서 확인합니다. 형식은 다음과 같습니다.
-    ```
-    http://{backend-ingress ADDRESS value}/contents/aws
+    echo http://$(kubectl get ingress/backend-ingress -o jsonpath='{.status.loadBalancer.ingress[*].hostname}')/contents/aws
     ```
 {{% notice info %}}
-인그레스 오브젝트가 배포되는 동안 약간의 시간이 소요됩니다. EC2 콘솔창에서 **Load Balancers** 상태가 active가 될 때까지 기다립니다.
+인그레스 오브젝트가 배포되는 동안 약간의 시간이 소요됩니다. [EC2 콘솔창](https://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#LoadBalancers:)에서 **Load Balancers** 상태가 active가 될 때까지 기다립니다.
 {{% /notice %}}

@@ -16,13 +16,7 @@ pre: "<b>  </b>"
 본 실습에서는 가장 최신의 kubectl 바이너리를 설치합니다(2020년 10월 기준 1.18).
 ```
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
-```
-kubectl 바이너리를 실행 가능하게 변경해줍니다.
-```
 chmod +x ./kubectl
-```
-사용자가 명령어를 사용할 수 있도록 디렉토리에 옮겨줍니다.
-```
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 아래의 명령어를 통해, 최신의 kubectl이 설치되었는지 확인합니다.
