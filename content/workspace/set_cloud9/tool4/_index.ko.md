@@ -1,18 +1,32 @@
 ---
 date: 2020-09-03
-title: "그 외의 다른 툴들 설치하기"
-weight: 260
+title: "eksctl 설치"
+weight: 270
 pre: "<b>  </b>"
 ---
 
-#### jq 설치하기
-jq는 JSON 형식의 데이터를 다루는 커맨드라인 유틸리티입니다. 아래의 명령어를 통해, jq를 설치합니다.
+#### eksctl 설치하기
+Amazon EKS 클러스터를 배포하는 방식은 다양합니다. AWS 콘솔, CloudFormation, CDK, eksctl 및 Terraform 등이 그 예입니다.
+
+{{% notice info %}}
+본 실습에서는 **eksctl을 사용하여 클러스터를 배포**합니다. 
+{{% /notice %}}
+
+![eksctl](/images/workspace/aws_cloud9_tool_01.png)
+
+[eksctl](https://eksctl.io/)이란 EKS 클러스터를 쉽게 생성 및 관리하는 CLI 툴입니다. Go 언어로 쓰여 있으며 CloudFormation 형태로 배포됩니다.
+
+아래의 명령어를 통해, 최신의 eksctl 바이너리를 다운로드 합니다.
 ```
-sudo yum install -y jq
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 ```
 
-### bash-completion 설치하기
-Bash 쉘에서 kubectl completion script는 **kubectl completion bash** 명령어를 통해 생성할 수 있습니다. 쉘에 completion script를 소싱하면 kubectl 명령어의 자동 완성을 가능하게 만들 수 있습니다. 하지만 이런 completion script는 bash-completion에 의존하기 때문에 아래의 명령어를 통해, [bash-completion](https://github.com/scop/bash-completion#installation)을 설치해야 합니다.
+바이너리를 /usr/local/bin으로 옮깁니다.
 ```
-sudo yum install -y bash-completion
+sudo mv -v /tmp/eksctl /usr/local/bin
+```
+
+아래의 명령어를 통해 설치 여부를 확인합니다.
+```
+eksctl version
 ```

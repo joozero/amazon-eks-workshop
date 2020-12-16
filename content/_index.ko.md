@@ -21,7 +21,7 @@ weight: 1
 
 모든 것을 오픈 소스로 직접 구축하기엔 업무를 수행할 팀원도 적고, 시간도 부족합니다. 그리고 kubernetes를 잘 모르는 인원도 포함되어 있습니다.
 
-이 때, A씨는 완전 관리형의 kubernetes 서비스인 [Amazon EKS(Amazon Elastic Kubernetes Service)](https://aws.amazon.com/ko/kubernetes/)를 발견하게 됩니다. 그리고 **Amazon EKS**의 장점 및 특징을 파악하기 위해, 간단한 웹 페이지를 올려보리라 결심합니다!
+이 때, A씨는 관리형 kubernetes 서비스인 [Amazon EKS(Amazon Elastic Kubernetes Service)](https://aws.amazon.com/ko/kubernetes/)를 발견하게 됩니다. 그리고 **Amazon EKS**의 장점 및 특징을 파악하기 위해, 간단한 PoC를 진행해보리라 결심합니다!
  
 {{% notice info %}}
 본 실습은 **컨테이너 이미지를 만드는 것을 시작으로 Amazon EKS에 컨테이너를 배포하여 웹 페이지를 올리는 것을 목표**로 합니다. 실습을 통해, 컨테이너, 쿠버네티스 그리고 Amazon EKS와 함께 사용하는 다양한 AWS 서비스들에 대해 학습합니다.
