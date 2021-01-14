@@ -1,7 +1,7 @@
 ---
 date: 2020-09-03
 title: "Amazon EKS"
-chapter: false
+chapter: true
 weight: 1
 ---
 
@@ -10,12 +10,11 @@ weight: 1
 ![eks architecture](/images/k8s_architecture.svg)
 
 국내 유명 기업의 DevOps 팀에 다니는 A씨는 새로운 웹 애플리케이션을 개발하는 프로젝트를 맡게 됩니다.
-
 해당 애플리케이션은 아래와 같은 부분에 대응할 수 있어야 합니다.
 
-- 새로운 요청이 있을 때, 변경 사항을 빠르게 반영
-- 손쉬운 확장
-- 적은 인원으로 운영 및 개발 업무 수행
+* 새로운 요청이 있을 때, 변경 사항을 빠르게 반영
+* 손쉬운 확장
+* 적은 인원으로 운영 및 개발 업무 수행
 
 위와 같은 요건을 확인한 A씨는 **Modern Application**을 구축하기로 결심했고, 팀원들과 상의한 끝에 **MSA, container, CI/CD**를 통해 결과물을 구축하려고 합니다. 그리고 다수의 의견을 수렴해 container orchestration tool로 kubernetes를 선정합니다. 
 

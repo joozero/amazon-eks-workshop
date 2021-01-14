@@ -11,7 +11,7 @@ pre: "<b>4-1  </b>"
 본 실습을 원치 않으신 분들은 **4-2 Amazon ECR에 이미지 올리기** 페이지로 이동합니다.
 {{%  /notice %}}
 
-#### 컨테이너 이미지 직접 만들기 
+<!--# 컨테이너 이미지 직접 만들기 -->
 
 ![container image overview](/images/container_image/container-image-overview.svg)
 
@@ -26,18 +26,14 @@ pre: "<b>4-1  </b>"
     EOF
     ```
     Docker File에서 각각이 의미하는 바는 아래와 같습니다.
-    ```
-    1. FROM: Base Image 지정(OS 및 버전 명시, Base Image에서 시작해서 커스텀 이미지를 추가)
-    2. RUN: shell command를 해당 docker image에 실행시킬 때 사용함
-    3. WORKDIR: Docker File에 있는 RUN, CMD, ENTRYPOINT, COPY, ADD 등의 지시를 수행할 곳
-    4. EXPOSE: 호스트와 연결할 포트 번호를 지정
-    5. CMD: application을 실행하기 위한 명령어 
-    ```
-2. **docker build 명령어**로 이미지를 만듭니다.  name에는 컨테이너 이미지 이름을 기재하고 tag의 경우, 따로 작성하지 않으면 latest라는 값을 가지게 됩니다.
-    ```
-    docker build -t {name:tag} . 
-    ```
-    본 실습에서는 아래와 같이 명령어를 작성합니다. 
+    
+    1. **FROM** : Base Image 지정(OS 및 버전 명시, Base Image에서 시작해서 커스텀 이미지를 추가)
+    2. **RUN** : shell command를 해당 docker image에 실행시킬 때 사용함
+    3. **WORKDIR** : Docker File에 있는 RUN, CMD, ENTRYPOINT, COPY, ADD 등의 지시를 수행할 곳
+    4. **EXPOSE** : 호스트와 연결할 포트 번호를 지정
+    5. **CMD** : application을 실행하기 위한 명령어 
+    
+2. **docker build 명령어**로 이미지를 만듭니다. name에는 컨테이너 이미지 이름을 기재하고 tag의 경우, 따로 작성하지 않으면 latest라는 값을 가지게 됩니다. 본 실습에서는 이미지 이름을 **test-image**로 tag는 latest 값을 가지도록 아래와 같이 명령어를 작성합니다. 
     ```
     docker build -t test-image . 
     ```
@@ -57,7 +53,7 @@ pre: "<b>4-1  </b>"
     ![docker ps image](/images/container_image/docker-ps.png)
 6. **docker logs 명령어**로 해당 컨테이너의 로그를 출력해서 상태를 확인할 수 있습니다.
     ```
-    docker logs -f test-image
+    docker logs -f test-nginx
     ```
 7. **docker exec 명령어**로 컨테이너 내부 쉘 환경으로 접근할 수 있습니다. 
     ```

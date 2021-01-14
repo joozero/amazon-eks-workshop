@@ -19,7 +19,7 @@ pre: "<b>3-3  </b>"
     ```
     aws configure get default.region
     ```
-2. 현재 실습을 진행하는 계정 ID를 환경 변수로 등록합니다.
+2. 현재 실습을 진행하는 AWS Account ID를 환경 변수로 등록합니다.
     ```
     export ACCOUNT_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.accountId')
 
@@ -27,7 +27,7 @@ pre: "<b>3-3  </b>"
     ```
 
 {{% notice info %}}
-리전을 명시해주지 않으면 클러스터를 배포한 후, 관련 정보를 확인할 때 에러가 뜹니다.
+리전을 명시해주지 않으면 클러스터를 배포한 후, 관련 정보를 확인할 때 에러가 뜹니다. 
 {{% /notice %}}
 
 
